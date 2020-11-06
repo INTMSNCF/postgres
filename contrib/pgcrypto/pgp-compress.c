@@ -112,12 +112,12 @@ compress_process(PushFilter *next, void *priv, const uint8 *data, int len)
 				n_out;
 	struct ZipStat *st = priv;
 
-	px_debug("compress_process: INTM-SNFC version");
+	/*px_debug("compress_process: INTM-SNFC version");*/
 
 	/*
 	 * process data
 	 */
-	st->stream.next_in = unconstify(uint8 *, data);
+	st->stream.next_in = (void *) data;
 	st->stream.avail_in = len;
 	while (st->stream.avail_in > 0)
 	{
